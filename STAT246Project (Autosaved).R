@@ -43,7 +43,16 @@ for(i in 1:length(lambda)){
 }
 pdf("ErrorPlot.pdf", width=13, height=8)
 plot(sort(rep(lambda,5)), unlist(errors), main="Error Rate vs. Lambda", xlab="Lambda", ylab="Error Rate")
+points(lambda, colMeans(matrix(unlist(errors), nrow=5, byrow=F)), pch=10, cex=5)
 dev.off()
+error_mat = matrix(unlist(errors), nrow=5, byrow=F)
+colnames(error_mat) = lambda
+error_mat
+colMeans(error_mat)
+
+
+
+
 
 ## Bayes Classification Method
 ### Returns the predicted digit based on Bayes classification as specified in Part a.
